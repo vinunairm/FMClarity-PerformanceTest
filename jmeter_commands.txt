@@ -1,0 +1,5 @@
+# To create a report in jtl format
+jmeter -n -t "FMClarity.jmx" -l "test_report.jtl"
+
+# To create a dashboard from jtl report
+jmeter -g "test_report.jtl" -o "dashboard"
