@@ -7,13 +7,7 @@
       <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-        <collectionProp name="Arguments.arguments">
-          <elementProp name="var1" elementType="Argument">
-            <stringProp name="Argument.name">var1</stringProp>
-            <stringProp name="Argument.value">100</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-        </collectionProp>
+        <collectionProp name="Arguments.arguments"/>
       </elementProp>
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
@@ -32,6 +26,30 @@
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
       </ThreadGroup>
       <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Facility CSV Data Set Config" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="filename">C:/Users/vnair/Documents/GitHub/FMClarity-PerformanceTest/csv/Facilities.csv</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="variableNames">facilityid</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Requests CSV Data Set Config" enabled="true">
+          <stringProp name="filename">C:/Users/vnair/Documents/GitHub/FMClarity-PerformanceTest/csv/Requests.csv</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="variableNames">statuslookup1,statuslookup2,statelookup</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
         <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
@@ -50,7 +68,7 @@
           <collectionProp name="HeaderManager.headers">
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">authorization</stringProp>
-              <stringProp name="Header.value">Bearer F9nubc2HGJakzP52IwBD0JeWQgGvjz1t4iL5SnHYK1_</stringProp>
+              <stringProp name="Header.value">Bearer 7xrMzvZT-fvpLN-41btUrr1lhZC2MMog6jkC0evLbPS </stringProp>
             </elementProp>
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">content-type</stringProp>
@@ -121,7 +139,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;RequestListQuery&quot;,&quot;variables&quot;:{&quot;statusLookup&quot;:[&quot;Complete&quot;,&quot;Closed&quot;],&quot;typeLookup&quot;:[],&quot;invoiceStatusLookup&quot;:[],&quot;quoteStatusLookup&quot;:[],&quot;quoteSubmissionStatusLookup&quot;:[],&quot;stateLookup&quot;:[&quot;WA&quot;],&quot;offset&quot;:25,&quot;limit&quot;:25,&quot;sortBy&quot;:&quot;lastUpdate&quot;,&quot;sortOrder&quot;:-1},&quot;query&quot;:&quot;query RequestListQuery($facilityId: ID, $keyword: String, $statusLookup: [RequestStatus], $typeLookup: [RequestType], $invoiceStatusLookup: [InvoiceStatus], $quoteStatusLookup: [QuoteStatus], $quoteSubmissionStatusLookup: [QuoteSubmissionStatus], $stateLookup: [State], $dueDate: DateRange, $completionDate: DateRange, $issuedAt: DateRange, $createdAt: DateRange, $offset: Int, $limit: Int, $sortBy: String, $sortOrder: Int) {\n  requestsCount(facilityId: $facilityId, keyword: $keyword, status: All, statusLookup: $statusLookup, typeLookup: $typeLookup, invoiceStatusLookup: $invoiceStatusLookup, quoteStatusLookup: $quoteStatusLookup, quoteSubmissionStatusLookup: $quoteSubmissionStatusLookup, stateLookup: $stateLookup, dueDate: $dueDate, completionDate: $completionDate, issuedAt: $issuedAt, createdAt: $createdAt)\n  requests(facilityId: $facilityId, keyword: $keyword, status: All, statusLookup: $statusLookup, typeLookup: $typeLookup, invoiceStatusLookup: $invoiceStatusLookup, quoteStatusLookup: $quoteStatusLookup, quoteSubmissionStatusLookup: $quoteSubmissionStatusLookup, stateLookup: $stateLookup, dueDate: $dueDate, completionDate: $completionDate, issuedAt: $issuedAt, createdAt: $createdAt, offset: $offset, limit: $limit, sortBy: $sortBy, sortOrder: $sortOrder) {\n    ...RequestFragment\n    __typename\n  }\n}\n\nfragment RequestFragment on Request {\n  _id\n  code\n  completionDate\n  costThreshold\n  createdAt\n  dueDate\n  facility {\n    _id\n    allowPropertyManager\n    name\n    state\n    __typename\n  }\n  fmTeam {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  invoiceStatus\n  invoiceVerifiedBy {\n    _id\n    name\n    __typename\n  }\n  invoiceVerified\n  isBaseBuilding\n  isManagedService\n  issuedAt\n  lastUpdate\n  name\n  priority\n  quoteStatus\n  quoteSubmissionComment\n  quoteSubmissionStatus\n  realEstateAgency {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  status\n  subtasksCount\n  supplier {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  team {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  type\n  __typename\n}\n&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;RequestListQuery&quot;,&quot;variables&quot;:{&quot;statusLookup&quot;:[${statuslookup1},${statuslookup2}],&quot;typeLookup&quot;:[],&quot;invoiceStatusLookup&quot;:[],&quot;quoteStatusLookup&quot;:[],&quot;quoteSubmissionStatusLookup&quot;:[],&quot;stateLookup&quot;:[${statelookup}],&quot;offset&quot;:25,&quot;limit&quot;:25,&quot;sortBy&quot;:&quot;lastUpdate&quot;,&quot;sortOrder&quot;:-1},&quot;query&quot;:&quot;query RequestListQuery($facilityId: ID, $keyword: String, $statusLookup: [RequestStatus], $typeLookup: [RequestType], $invoiceStatusLookup: [InvoiceStatus], $quoteStatusLookup: [QuoteStatus], $quoteSubmissionStatusLookup: [QuoteSubmissionStatus], $stateLookup: [State], $dueDate: DateRange, $completionDate: DateRange, $issuedAt: DateRange, $createdAt: DateRange, $offset: Int, $limit: Int, $sortBy: String, $sortOrder: Int) {\n  requestsCount(facilityId: $facilityId, keyword: $keyword, status: All, statusLookup: $statusLookup, typeLookup: $typeLookup, invoiceStatusLookup: $invoiceStatusLookup, quoteStatusLookup: $quoteStatusLookup, quoteSubmissionStatusLookup: $quoteSubmissionStatusLookup, stateLookup: $stateLookup, dueDate: $dueDate, completionDate: $completionDate, issuedAt: $issuedAt, createdAt: $createdAt)\n  requests(facilityId: $facilityId, keyword: $keyword, status: All, statusLookup: $statusLookup, typeLookup: $typeLookup, invoiceStatusLookup: $invoiceStatusLookup, quoteStatusLookup: $quoteStatusLookup, quoteSubmissionStatusLookup: $quoteSubmissionStatusLookup, stateLookup: $stateLookup, dueDate: $dueDate, completionDate: $completionDate, issuedAt: $issuedAt, createdAt: $createdAt, offset: $offset, limit: $limit, sortBy: $sortBy, sortOrder: $sortOrder) {\n    ...RequestFragment\n    __typename\n  }\n}\n\nfragment RequestFragment on Request {\n  _id\n  code\n  completionDate\n  costThreshold\n  createdAt\n  dueDate\n  facility {\n    _id\n    allowPropertyManager\n    name\n    state\n    __typename\n  }\n  fmTeam {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  invoiceStatus\n  invoiceVerifiedBy {\n    _id\n    name\n    __typename\n  }\n  invoiceVerified\n  isBaseBuilding\n  isManagedService\n  issuedAt\n  lastUpdate\n  name\n  priority\n  quoteStatus\n  quoteSubmissionComment\n  quoteSubmissionStatus\n  realEstateAgency {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  status\n  subtasksCount\n  supplier {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  team {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  type\n  __typename\n}\n&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -286,7 +304,7 @@
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;FacilityLevelListQuery&quot;,&quot;variables&quot;:{&quot;facilityId&quot;:&quot;AkiyiHMQGAYzwPJog&quot;},&quot;query&quot;:&quot;query FacilityLevelListQuery($facilityId: ID!) {\n  facility(_id: $facilityId) {\n    _id\n    areas {\n      name\n      children {\n        name\n        children {\n          name\n          __typename\n        }\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}\n&quot;}</stringProp>
+                  <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;FacilityLevelListQuery&quot;,&quot;variables&quot;:{&quot;facilityId&quot;:${facilityid}},&quot;query&quot;:&quot;query FacilityLevelListQuery($facilityId: ID!) {\n  facility(_id: $facilityId) {\n    _id\n    areas {\n      name\n      children {\n        name\n        children {\n          name\n          __typename\n        }\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}\n&quot;}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -338,7 +356,7 @@
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;FacilityServiceListQuery&quot;,&quot;variables&quot;:{&quot;facilityId&quot;:&quot;m6hbbWvY3BxCPpvu5&quot;},&quot;query&quot;:&quot;query FacilityServiceListQuery($facilityId: ID!) {\n  facility(_id: $facilityId) {\n    _id\n    services {\n      children {\n        data {\n          ...FacilityServiceFragment\n          __typename\n        }\n        name\n        __typename\n      }\n      data {\n        ...FacilityServiceFragment\n        __typename\n      }\n      name\n      __typename\n    }\n    __typename\n  }\n}\n\nfragment FacilityServiceFragment on ServiceData {\n  defaultContact {\n    _id\n    __typename\n  }\n  essentialSafetyMeasure\n  supplier {\n    _id\n    __typename\n  }\n  __typename\n}\n&quot;</stringProp>
+                  <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;FacilityServiceListQuery&quot;,&quot;variables&quot;:{&quot;facilityId&quot;:&quot;wuy7qn2muJmddirwY&quot;},&quot;query&quot;:&quot;query FacilityServiceListQuery($facilityId: ID!) {\n  facility(_id: $facilityId) {\n    _id\n    services {\n      children {\n        data {\n          ...FacilityServiceFragment\n          __typename\n        }\n        name\n        __typename\n      }\n      data {\n        ...FacilityServiceFragment\n        __typename\n      }\n      name\n      __typename\n    }\n    __typename\n  }\n}\n\nfragment FacilityServiceFragment on ServiceData {\n  defaultContact {\n    _id\n    __typename\n  }\n  essentialSafetyMeasure\n  supplier {\n    _id\n    __typename\n  }\n  __typename\n}\n&quot;}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -417,6 +435,298 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;TeamMemberListQuery&quot;,&quot;variables&quot;:{&quot;teamId&quot;:&quot;PFJ6mnwhPW6bAkkC8&quot;},&quot;query&quot;:&quot;query TeamMemberListQuery($teamId: ID!) {\n  team(_id: $teamId) {\n    _id\n    members {\n      _id\n      email\n      name\n      role\n      __typename\n    }\n    __typename\n  }\n}\n&quot;}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path"></stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Simple Controller" enabled="true"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CreateRequestMutation" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;CreateRequestMutation&quot;,&quot;variables&quot;:{&quot;facilityId&quot;:&quot;m6hbbWvY3BxCPpvu5&quot;,&quot;request&quot;:{&quot;type&quot;:&quot;Ad-hoc&quot;,&quot;supplierContacts&quot;:[&quot;LyFPxTYqddeMxYgbv&quot;],&quot;supplierId&quot;:&quot;PFJ6mnwhPW6bAkkC8&quot;,&quot;subservice&quot;:null,&quot;scheduledDate&quot;:&quot;2020-10-20T03:28:44.000Z&quot;,&quot;service&quot;:{&quot;name&quot;:&quot;Building Maintenance Unit&quot;},&quot;priority&quot;:&quot;Standard&quot;,&quot;pointOfContactTwo&quot;:{&quot;_id&quot;:&quot;Xcd6nc5CwRCugRyak&quot;},&quot;pointOfContact&quot;:{&quot;_id&quot;:&quot;ZmaaDsukHQkKgoQQm&quot;},&quot;parentId&quot;:&quot;&quot;,&quot;name&quot;:&quot;test&quot;,&quot;level&quot;:{&quot;name&quot;:&quot;Site&quot;},&quot;identifier&quot;:null,&quot;dueDate&quot;:&quot;2020-10-20T03:28:44.000Z&quot;,&quot;description&quot;:&quot;test descrition&quot;,&quot;costThreshold&quot;:500,&quot;area&quot;:{&quot;name&quot;:&quot;Austin Hall, Unit 3&quot;},&quot;_id&quot;:&quot;goP8Zn5bcARZSJhA5&quot;}},&quot;query&quot;:&quot;mutation CreateRequestMutation($facilityId: ID!, $request: RequestInput!) {\n  createRequest(facilityId: $facilityId, request: $request) {\n    ...RequestFragment\n    __typename\n  }\n}\n\nfragment RequestFragment on Request {\n  _id\n  code\n  completionDate\n  costThreshold\n  createdAt\n  dueDate\n  facility {\n    _id\n    allowPropertyManager\n    name\n    state\n    __typename\n  }\n  fmTeam {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  invoiceStatus\n  invoiceVerifiedBy {\n    _id\n    name\n    __typename\n  }\n  invoiceVerified\n  isBaseBuilding\n  isManagedService\n  issuedAt\n  lastUpdate\n  name\n  priority\n  quoteStatus\n  quoteSubmissionComment\n  quoteSubmissionStatus\n  realEstateAgency {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  status\n  subtasksCount\n  supplier {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  team {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  type\n  __typename\n}\n&quot;}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path"></stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="RequestQuery" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;RequestQuery&quot;,&quot;variables&quot;:{&quot;_id&quot;:&quot;goP8Zn5bcARZSJhA5&quot;},&quot;query&quot;:&quot;query RequestQuery($_id: ID!) {\n  request(_id: $_id) {\n    ...RequestQueryFragment\n    __typename\n  }\n}\n\nfragment RequestQueryFragment on Request {\n  ...RequestFragment\n  allowedActions\n  approvedBy {\n    _id\n    name\n    __typename\n  }\n  area {\n    name\n    __typename\n  }\n  assignee {\n    _id\n    name\n    __typename\n  }\n  bookingPeriod {\n    startTime\n    endTime\n    __typename\n  }\n  costCentreCode\n  description\n  documentsCount\n  dueDate\n  eta\n  facility {\n    _id\n    billingDetails {\n      company\n      address_1\n      address_2\n      suburb\n      state\n      postcode\n      __typename\n    }\n    fullAddress {\n      city\n      streetName\n      streetNumber\n      __typename\n    }\n    name\n    propertyCode\n    __typename\n  }\n  identifier {\n    name\n    __typename\n  }\n  incidenceDate\n  incidentVictim\n  invoiceDetails {\n    dueDate\n    invoiceDate\n    invoiceNumber\n    totalPayablePlusGst\n    __typename\n  }\n  isInternal\n  isBaseBuilding\n  isManagedService\n  level {\n    name\n    __typename\n  }\n  location\n  memberName\n  messageChannelList {\n    name\n    __typename\n  }\n  owner {\n    _id\n    __typename\n  }\n  parent {\n    _id\n    name\n    supplier {\n      _id\n      __typename\n    }\n    __typename\n  }\n  pointOfContact {\n    _id\n    profile {\n      name\n      email\n      phone\n      phone2\n      __typename\n    }\n    __typename\n  }\n  pointOfContactTwo {\n    _id\n    profile {\n      name\n      email\n      phone\n      phone2\n      __typename\n    }\n    __typename\n  }\n  readBy {\n    _id\n    name\n    __typename\n  }\n  realEstateAgency {\n    _id\n    address {\n      city\n      country\n      postcode\n      state\n      streetNumber\n      streetName\n      __typename\n    }\n    name\n    thumbUrl\n    __typename\n  }\n  reporterContact\n  scheduledDate\n  service {\n    name\n    data {\n      note\n      __typename\n    }\n    __typename\n  }\n  serviceReport {\n    comment\n    condition\n    __typename\n  }\n  subservice {\n    name\n    data {\n      asset\n      condition\n      note\n      __typename\n    }\n    __typename\n  }\n  supplier {\n    _id\n    name\n    email\n    phone\n    phone2\n    thumbUrl\n    __typename\n  }\n  supplierContacts {\n    _id\n    __typename\n  }\n  team {\n    _id\n    name\n    termsAndConditions\n    thumbUrl\n    __typename\n  }\n  __typename\n}\n\nfragment RequestFragment on Request {\n  _id\n  code\n  completionDate\n  costThreshold\n  createdAt\n  dueDate\n  facility {\n    _id\n    allowPropertyManager\n    name\n    state\n    __typename\n  }\n  fmTeam {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  invoiceStatus\n  invoiceVerifiedBy {\n    _id\n    name\n    __typename\n  }\n  invoiceVerified\n  isBaseBuilding\n  isManagedService\n  issuedAt\n  lastUpdate\n  name\n  priority\n  quoteStatus\n  quoteSubmissionComment\n  quoteSubmissionStatus\n  realEstateAgency {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  status\n  subtasksCount\n  supplier {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  team {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  type\n  __typename\n}\n&quot;}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path"></stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MessageChannelListQuery" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;MessageChannelListQuery&quot;,&quot;variables&quot;:{&quot;requestId&quot;:&quot;goP8Zn5bcARZSJhA5&quot;},&quot;query&quot;:&quot;query MessageChannelListQuery($requestId: ID!) {\n  request(_id: $requestId) {\n    messageChannelList {\n      name\n      __typename\n    }\n    __typename\n  }\n}\n&quot;}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path"></stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MessageChannelQuery" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;MessageChannelQuery&quot;,&quot;variables&quot;:{&quot;name&quot;:&quot;updates&quot;,&quot;requestId&quot;:&quot;goP8Zn5bcARZSJhA5&quot;},&quot;query&quot;:&quot;query MessageChannelQuery($name: String, $requestId: ID!) {\n  messageChannel(name: $name, requestId: $requestId) {\n    name\n    description\n    memberCount\n    memberList {\n      _id\n      email\n      name\n      thumbUrl\n      __typename\n    }\n    allowedActions\n    __typename\n  }\n}\n&quot;}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path"></stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MessageListQuery" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;MessageListQuery&quot;,&quot;variables&quot;:{&quot;limit&quot;:5,&quot;channel&quot;:null,&quot;requestId&quot;:&quot;goP8Zn5bcARZSJhA5&quot;},&quot;query&quot;:&quot;query MessageListQuery($channel: String, $requestId: ID!, $offset: Int = 0, $limit: Int = 5) {\n  messageCount(channel: $channel, requestId: $requestId)\n  messageList(channel: $channel, limit: $limit, offset: $offset, requestId: $requestId) {\n    ...MessageFragment\n    __typename\n  }\n}\n\nfragment MessageFragment on Message {\n  _id\n  body\n  channel\n  createdAt\n  followup {\n    _id\n    name\n    __typename\n  }\n  owner {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  subject\n  target {\n    _id\n    collectionName\n    name\n    __typename\n  }\n  subtask {\n    _id\n    name\n    __typename\n  }\n  updatedAt\n  verb\n  __typename\n}\n&quot;}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path"></stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MeQuery" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;MeQuery&quot;,&quot;variables&quot;:{},&quot;query&quot;:&quot;query MeQuery {\n  me {\n    _id\n    name\n    role\n    team {\n      _id\n      canVerifyInvoices\n      hideSuppliersFromClientTeam\n      timeframes\n      type\n      __typename\n    }\n    thumbUrl\n    __typename\n  }\n}\n&quot;}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path"></stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="UpdateRequestMutation" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;UpdateRequestMutation&quot;,&quot;variables&quot;:{&quot;facilityId&quot;:&quot;m6hbbWvY3BxCPpvu5&quot;,&quot;requestId&quot;:&quot;goP8Zn5bcARZSJhA5&quot;,&quot;request&quot;:{&quot;type&quot;:&quot;Ad-hoc&quot;,&quot;supplierContacts&quot;:[&quot;LyFPxTYqddeMxYgbv&quot;],&quot;supplierId&quot;:&quot;PFJ6mnwhPW6bAkkC8&quot;,&quot;subservice&quot;:null,&quot;scheduledDate&quot;:&quot;2020-10-20T03:28:44.000Z&quot;,&quot;service&quot;:{&quot;name&quot;:&quot;Building Maintenance Unit&quot;},&quot;priority&quot;:&quot;Standard&quot;,&quot;pointOfContactTwo&quot;:{&quot;_id&quot;:&quot;Xcd6nc5CwRCugRyak&quot;},&quot;pointOfContact&quot;:{&quot;_id&quot;:&quot;ZmaaDsukHQkKgoQQm&quot;},&quot;name&quot;:&quot;test&quot;,&quot;level&quot;:{&quot;name&quot;:&quot;Site&quot;},&quot;identifier&quot;:null,&quot;dueDate&quot;:&quot;2020-10-20T03:28:44.000Z&quot;,&quot;description&quot;:&quot;test descrition&quot;,&quot;costThreshold&quot;:700,&quot;area&quot;:{&quot;name&quot;:&quot;Austin Hall, Unit 3&quot;},&quot;_id&quot;:&quot;goP8Zn5bcARZSJhA5&quot;}},&quot;query&quot;:&quot;mutation UpdateRequestMutation($requestId: ID!, $request: RequestInput!) {\n  updateRequest(_id: $requestId, request: $request) {\n    ...RequestFragment\n    __typename\n  }\n}\n\nfragment RequestFragment on Request {\n  _id\n  code\n  completionDate\n  costThreshold\n  createdAt\n  dueDate\n  facility {\n    _id\n    allowPropertyManager\n    name\n    state\n    __typename\n  }\n  fmTeam {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  invoiceStatus\n  invoiceVerifiedBy {\n    _id\n    name\n    __typename\n  }\n  invoiceVerified\n  isBaseBuilding\n  isManagedService\n  issuedAt\n  lastUpdate\n  name\n  priority\n  quoteStatus\n  quoteSubmissionComment\n  quoteSubmissionStatus\n  realEstateAgency {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  status\n  subtasksCount\n  supplier {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  team {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  type\n  __typename\n}\n&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="MessageCreateMutation" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;MessageCreateMutation&quot;,&quot;variables&quot;:{&quot;message&quot;:{&quot;type&quot;:&quot;comment&quot;,&quot;body&quot;:&quot;this will be issued&quot;,&quot;channel&quot;:&quot;requester&quot;,&quot;target&quot;:{&quot;query&quot;:{&quot;_id&quot;:&quot;goP8Zn5bcARZSJhA5&quot;},&quot;collectionName&quot;:&quot;Request&quot;}}},&quot;query&quot;:&quot;mutation MessageCreateMutation($message: MessageInput!) {\n  createMessage(message: $message) {\n    ...MessageFragment\n    __typename\n  }\n}\n\nfragment MessageFragment on Message {\n  _id\n  body\n  channel\n  createdAt\n  followup {\n    _id\n    name\n    __typename\n  }\n  owner {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  subject\n  target {\n    _id\n    collectionName\n    name\n    __typename\n  }\n  subtask {\n    _id\n    name\n    __typename\n  }\n  updatedAt\n  verb\n  __typename\n}\n&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Simple Controller" enabled="true"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="FacilitiesCategoriesQuery" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;FacilityCategoriesQuery&quot;,&quot;variables&quot;:{&quot;keyword&quot;:&quot;&quot;,&quot;stateLookup&quot;:[]},&quot;query&quot;:&quot;query FacilityCategoriesQuery($keyword: String, $stateLookup: [String]) {\n  facilityCategories(keyword: $keyword, stateLookup: $stateLookup)\n}\n&quot;}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path"></stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="FacilityMessageListQuery" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;FacilityMessageListQuery&quot;,&quot;variables&quot;:{&quot;limit&quot;:5,&quot;facilityId&quot;:&quot;m6hbbWvY3BxCPpvu5&quot;},&quot;query&quot;:&quot;query FacilityMessageListQuery($facilityId: ID!, $limit: Int = 5, $offset: Int = 0) {\n  facility(_id: $facilityId) {\n    _id\n    allowedActions\n    messages(limit: $limit, offset: $offset) {\n      ...MessageFragment\n      __typename\n    }\n    messagesCount\n    __typename\n  }\n}\n\nfragment MessageFragment on Message {\n  _id\n  body\n  channel\n  createdAt\n  followup {\n    _id\n    name\n    __typename\n  }\n  owner {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  subject\n  target {\n    _id\n    collectionName\n    name\n    __typename\n  }\n  subtask {\n    _id\n    name\n    __typename\n  }\n  updatedAt\n  verb\n  __typename\n}\n&quot;}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path"></stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="FacilityDocumentsQuery" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;facilityDocumentsQuery&quot;,&quot;variables&quot;:{&quot;facilityId&quot;:&quot;m6hbbWvY3BxCPpvu5&quot;,&quot;service&quot;:null,&quot;subService&quot;:null,&quot;types&quot;:null},&quot;query&quot;:&quot;query facilityDocumentsQuery($facilityId: ID!, $types: [DocumentType], $service: String, $subService: String, $offset: Int, $limit: Int) {\n  facility(_id: $facilityId) {\n    _id\n    documents(types: $types, service: $service, subService: $subService, offset: $offset, limit: $limit) {\n      ...DocumentServiceFragment\n      __typename\n    }\n    __typename\n  }\n}\n\nfragment DocumentServiceFragment on Document {\n  _id\n  createdAt\n  name\n  type\n  service {\n    name\n    __typename\n  }\n  subService {\n    name\n    __typename\n  }\n  __typename\n}\n&quot;}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
