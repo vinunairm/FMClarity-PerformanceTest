@@ -1,0 +1,7 @@
+StatusLookup1,StatusLookup2,StateLookup
+Complete,Closed,NSW
+New,Issued,WA
+New,Complete,VIC
+Issued,Cancelled,SA
+New,Complete,QLD
+Cancelled,New,VIC
