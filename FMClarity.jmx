@@ -469,13 +469,19 @@
         </hashTree>
         <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Save request controller" enabled="true"/>
         <hashTree>
+          <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler ${__RandomString(17,0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz,)}" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugSampler>
+          <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CreateRequestMutation" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;CreateRequestMutation&quot;,&quot;variables&quot;:{&quot;facilityId&quot;:&quot;${facilityId}&quot;,&quot;request&quot;:{&quot;type&quot;:&quot;${type}&quot;,&quot;supplierContacts&quot;:[&quot;LyFPxTYqddeMxYgbv&quot;],&quot;supplierId&quot;:&quot;PFJ6mnwhPW6bAkkC8&quot;,&quot;subservice&quot;:null,&quot;scheduledDate&quot;:&quot;${scheduledDate}&quot;,&quot;service&quot;:{&quot;name&quot;:&quot;${service}&quot;},&quot;priority&quot;:&quot;${priority}&quot;,&quot;pointOfContactTwo&quot;:{&quot;_id&quot;:&quot;Xcd6nc5CwRCugRyak&quot;},&quot;pointOfContact&quot;:{&quot;_id&quot;:&quot;${pointOfContact}&quot;},&quot;parentId&quot;:&quot;&quot;,&quot;name&quot;:&quot;test&quot;,&quot;level&quot;:{&quot;name&quot;:&quot;${level}&quot;},&quot;identifier&quot;:null,&quot;dueDate&quot;:&quot;${dueDate}&quot;,&quot;description&quot;:&quot;test descrition&quot;,&quot;costThreshold&quot;:500,&quot;area&quot;:{&quot;name&quot;:&quot;Austin Hall, Unit 3&quot;},&quot;_id&quot;:&quot;${requestid}&quot;}},&quot;query&quot;:&quot;mutation CreateRequestMutation($facilityId: ID!, $request: RequestInput!) {\n  createRequest(facilityId: $facilityId, request: $request) {\n    ...RequestFragment\n    __typename\n  }\n}\n\nfragment RequestFragment on Request {\n  _id\n  code\n  completionDate\n  costThreshold\n  createdAt\n  dueDate\n  facility {\n    _id\n    allowPropertyManager\n    name\n    state\n    __typename\n  }\n  fmTeam {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  invoiceStatus\n  invoiceVerifiedBy {\n    _id\n    name\n    __typename\n  }\n  invoiceVerified\n  isBaseBuilding\n  isManagedService\n  issuedAt\n  lastUpdate\n  name\n  priority\n  quoteStatus\n  quoteSubmissionComment\n  quoteSubmissionStatus\n  realEstateAgency {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  status\n  subtasksCount\n  supplier {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  team {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  type\n  __typename\n}\n&quot;}</stringProp>
+                  <stringProp name="Argument.value">{&quot;operationName&quot;:&quot;CreateRequestMutation&quot;,&quot;variables&quot;:{&quot;facilityId&quot;:&quot;${facilityId}&quot;,&quot;request&quot;:{&quot;type&quot;:&quot;${type}&quot;,&quot;supplierContacts&quot;:[&quot;LyFPxTYqddeMxYgbv&quot;],&quot;supplierId&quot;:&quot;PFJ6mnwhPW6bAkkC8&quot;,&quot;subservice&quot;:null,&quot;scheduledDate&quot;:&quot;${scheduledDate}&quot;,&quot;service&quot;:{&quot;name&quot;:&quot;${service}&quot;},&quot;priority&quot;:&quot;${priority}&quot;,&quot;pointOfContactTwo&quot;:{&quot;_id&quot;:&quot;Xcd6nc5CwRCugRyak&quot;},&quot;pointOfContact&quot;:{&quot;_id&quot;:&quot;${pointOfContact}&quot;},&quot;parentId&quot;:&quot;&quot;,&quot;name&quot;:&quot;jmetertest&quot;,&quot;level&quot;:{&quot;name&quot;:&quot;${level}&quot;},&quot;identifier&quot;:null,&quot;dueDate&quot;:&quot;${dueDate}&quot;,&quot;description&quot;:&quot;test descrition&quot;,&quot;costThreshold&quot;:500,&quot;area&quot;:{&quot;name&quot;:&quot;Austin Hall, Unit 3&quot;},&quot;_id&quot;:&quot;${requestid}&quot;}},&quot;query&quot;:&quot;mutation CreateRequestMutation($facilityId: ID!, $request: RequestInput!) {\n  createRequest(facilityId: $facilityId, request: $request) {\n    ...RequestFragment\n    __typename\n  }\n}\n\nfragment RequestFragment on Request {\n  _id\n  code\n  completionDate\n  costThreshold\n  createdAt\n  dueDate\n  facility {\n    _id\n    allowPropertyManager\n    name\n    state\n    __typename\n  }\n  fmTeam {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  invoiceStatus\n  invoiceVerifiedBy {\n    _id\n    name\n    __typename\n  }\n  invoiceVerified\n  isBaseBuilding\n  isManagedService\n  issuedAt\n  lastUpdate\n  name\n  priority\n  quoteStatus\n  quoteSubmissionComment\n  quoteSubmissionStatus\n  realEstateAgency {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  status\n  subtasksCount\n  supplier {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  team {\n    _id\n    name\n    thumbUrl\n    __typename\n  }\n  type\n  __typename\n}\n&quot;}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -499,7 +505,8 @@
               <stringProp name="cacheKey">true</stringProp>
               <stringProp name="filename"></stringProp>
               <stringProp name="parameters"></stringProp>
-              <stringProp name="script"></stringProp>
+              <stringProp name="script">${__RandomString(17,0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz,requestid)}
+</stringProp>
               <stringProp name="scriptLanguage">java</stringProp>
             </JSR223PreProcessor>
             <hashTree/>
